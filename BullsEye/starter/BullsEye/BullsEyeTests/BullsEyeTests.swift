@@ -32,7 +32,7 @@ import XCTest
 
 class BullsEyeTests: XCTestCase {
   
-  var sut: BullsEyeGame!
+  var sut: BullsEyeGame! // sut - System Under Test
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -50,7 +50,7 @@ class BullsEyeTests: XCTestCase {
 
   func testScoreIsComputedWhenGuessIsHigherThanTarget() {
     // given
-    let guess = sut.targetValue + 5
+    let guess = sut.targetValue - 5
 
     // when
     sut.check(guess: guess)
