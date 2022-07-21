@@ -38,18 +38,18 @@ class BullsEyeGame {
   var targetValue = 50
   var scoreRound = 0
   var scoreTotal = 0
-
+  
   var urlSession: URLSessionProtocol = URLSession.shared
-
+  
   init() {
     startNewGame()
   }
-
+  
   func startNewGame() {
     round = 1
     scoreTotal = 0
   }
-
+  
   func startNewRound(completion: @escaping () -> Void) {
     round += 1
     scoreRound = 0
@@ -60,16 +60,16 @@ class BullsEyeGame {
       }
     }
   }
-
+  
   @discardableResult
   func check(guess: Int) -> Int {
-    let difference = guess - targetValue
-    //    let difference = abs(targetValue - guess)
+    //let difference = guess - targetValue
+    let difference = abs(targetValue - guess)
     scoreRound = 100 - difference
     scoreTotal += scoreRound
     return difference
   }
-
+  
   func getRandomNumber(completion: @escaping (Int) -> Void) {
     guard let url = URL(string: "http://www.randomnumberapi.com/api/v1.0/random?min=0&max=100&count=1") else {
       return
