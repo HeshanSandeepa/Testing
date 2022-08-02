@@ -13,6 +13,7 @@
 		202D823E25D7D8A300778080 /* URLSessionStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202D823D25D7D8A300778080 /* URLSessionStub.swift */; };
 		5394F02521864DF5006E754C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5394F02321864DF4006E754C /* LaunchScreen.storyboard */; };
 		CC68D58D2892C38C00191BCB /* BullsEyeSlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC68D58C2892C38C00191BCB /* BullsEyeSlowTests.swift */; };
+		CCA94871289966CE00ED4694 /* BullsEyeFakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA94870289966CE00ED4694 /* BullsEyeFakeTests.swift */; };
 		CCE365F42850DCB60033DBFF /* BullsEyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE365F32850DCB60033DBFF /* BullsEyeTests.swift */; };
 		D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F2071F4A9144005CD714 /* Main.storyboard */; };
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		5394F02421864DF4006E754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC68D58A2892C38C00191BCB /* BullsEyeSlowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BullsEyeSlowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC68D58C2892C38C00191BCB /* BullsEyeSlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeSlowTests.swift; sourceTree = "<group>"; };
+		CCA94870289966CE00ED4694 /* BullsEyeFakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeFakeTests.swift; sourceTree = "<group>"; };
 		CCE365F12850DCB60033DBFF /* BullsEyeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BullsEyeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCE365F32850DCB60033DBFF /* BullsEyeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeTests.swift; sourceTree = "<group>"; };
 		D2A5F2001F4A9144005CD714 /* BullsEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BullsEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +92,7 @@
 		CC68D58B2892C38C00191BCB /* BullsEyeSlowTests */ = {
 			isa = PBXGroup;
 			children = (
+				CCA94870289966CE00ED4694 /* BullsEyeFakeTests.swift */,
 				CC68D58C2892C38C00191BCB /* BullsEyeSlowTests.swift */,
 			);
 			path = BullsEyeSlowTests;
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC68D58D2892C38C00191BCB /* BullsEyeSlowTests.swift in Sources */,
+				CCA94871289966CE00ED4694 /* BullsEyeFakeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

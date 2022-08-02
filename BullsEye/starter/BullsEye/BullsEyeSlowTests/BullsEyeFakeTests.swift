@@ -27,84 +27,51 @@
 /// THE SOFTWARE.
 
 import XCTest
-
 @testable import BullsEye
 
-class BullsEyeSlowTests: XCTestCase {
+
+class BullsEyeFakeTests: XCTestCase {
   
-  var sut: URLSession!
-  let networkMonitor = NetworkMonitor.shared
+  var sut: BullsEyeGame!
   
   override func setUpWithError() throws {
     try super.setUpWithError()
-    
-    sut = URLSession(configuration: .default)
+    sut = BullsEyeGame()
   }
   
   override func tearDownWithError() throws {
-    try super.tearDownWithError()
     sut = nil
+    try super.tearDownWithError()
   }
   
-  // Asynchronous test: success fast, failure slow
-  func testValidApiCallGetsHTTPStatusCode200() throws {
-    
-    try XCTSkipUnless(
-      networkMonitor.isReachable,
-      "Network connectivity needed for this test.")
-    
+  func testStartNewRoundUsesRandomValueFromApiRequest() {
     // given
-    let urlString =
-    "http://www.randomnumberapi.com/api/v1.0/random?min=0&max=100&count=1"
-    let url = URL(string: urlString)!
-
-
     // 1
-    let promise = expectation(description: "API workign as expected Status code: 200")
-    
-    // when
-    let dataTask = sut.dataTask(with: url) { _, response, error in
-      // then
-      if let error = error {
-        XCTFail("Error: \(error.localizedDescription)")
-        return
-      } else if let statusCode = (response as? HTTPURLResponse)?.statusCode {
-        if statusCode == 200 {
-          // 2
-          promise.fulfill()
-        } else {
-          XCTFail("Status code: \(statusCode)")
-        }
-      }
-    }
-    dataTask.resume()
-    // 3
-    wait(for: [promise], timeout: 5)
-  }
-  
-  func testApiCallCompletes() throws {
-    // given
-    //let urlString = "http://www.randomnumberapi.com/api/v1.0/random?min=0&max=100&count=1"
-    let urlString = "http://www.randomnumberapi.com/test"
+    let stubbedData = "[10]".data(using: .utf8)
+    let urlString =
+      "http://www.randomnumberapi.com/api/v1.0/random?min=0&max=100&count=1"
     let url = URL(string: urlString)!
-    let promise = expectation(description: "Completion handler invoked")
-    var statusCode: Int?
-    var responseError: Error?
+    let stubbedResponse = HTTPURLResponse(
+      url: url,
+      statusCode: 200,
+      httpVersion: nil,
+      headerFields: nil)
+    let urlSessionStub = URLSessionStub(
+      data: stubbedData,
+      response: stubbedResponse,
+      error: nil)
+    sut.urlSession = urlSessionStub
+    let promise = expectation(description: "Value Received")
 
     // when
-    let dataTask = sut.dataTask(with: url) { _, response, error in
-      statusCode = (response as? HTTPURLResponse)?.statusCode
-      responseError = error
+    sut.startNewRound {
+      // then
+      // 2
+      XCTAssertEqual(self.sut.targetValue, 10)
       promise.fulfill()
     }
-    dataTask.resume()
     wait(for: [promise], timeout: 5)
-
-    // then
-    XCTAssertNil(responseError)
-    XCTAssertEqual(statusCode, 200)
   }
 
-  
   
 }
